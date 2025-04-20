@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Gallery from './components/gallery';
 import DestinationSelector from './components/DestinationSelector';
 
-const url = '/api/react-tours-project'; 
+const url = '/api/react-tours-project';
 
 const App = () => {
   const [tours, setTours] = useState([]);
@@ -19,7 +19,6 @@ const App = () => {
       const data = await res.json();
       setTours(data);
     } catch (err) {
-      console.error('Fetch error:', err);
       setError(true);
     }
     setLoading(false);
@@ -32,8 +31,6 @@ const App = () => {
   const removeTour = (id) => {
     const updatedTours = tours.filter((tour) => tour.id !== id);
     setTours(updatedTours);
-
-    // If the selected tour is removed, reset filter
     if (
       selected !== 'All' &&
       !updatedTours.some((tour) => tour.name.toLowerCase() === selected.toLowerCase())
@@ -48,6 +45,10 @@ const App = () => {
       : tours.filter(
           (tour) => tour.name.toLowerCase() === selected.toLowerCase()
         );
+
+  console.log('Selected:', selected);
+  console.log('Tour names:', tours.map(t => t.name));
+  console.log('Filtered:', filteredTours.map(t => t.name));
 
   return (
     <main>
