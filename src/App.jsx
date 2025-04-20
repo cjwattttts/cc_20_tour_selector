@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Gallery from './components/gallery';
 import DestinationSelector from './components/DestinationSelector';
 
-const url = '/api/react-tours-project';
+const url = '/api/react-tours-project'; 
 
 const App = () => {
   const [tours, setTours] = useState([]);
@@ -30,7 +30,16 @@ const App = () => {
   }, []);
 
   const removeTour = (id) => {
-    setTours((prev) => prev.filter((tour) => tour.id !== id));
+    const updatedTours = tours.filter((tour) => tour.id !== id);
+    setTours(updatedTours);
+
+    // If the selected tour is removed, reset filter
+    if (
+      selected !== 'All' &&
+      !updatedTours.some((tour) => tour.name.toLowerCase() === selected.toLowerCase())
+    ) {
+      setSelected('All');
+    }
   };
 
   const filteredTours =
