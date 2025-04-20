@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Gallery from '/components/Gallery.jsx';
+import Gallery from './components/gallery';
 import DestinationSelector from './components/DestinationSelector';
 
 const url = '/api/react-tours-project'; // uses Vite proxy
