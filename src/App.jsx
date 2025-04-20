@@ -15,10 +15,9 @@ const App = () => {
     setError(false);
     try {
       const res = await fetch(url);
-      if (!res.ok) throw new Error('Fetch failed');
       const data = await res.json();
       setTours(data);
-    } catch (err) {
+    } catch {
       setError(true);
     }
     setLoading(false);
@@ -29,12 +28,9 @@ const App = () => {
   }, []);
 
   const removeTour = (id) => {
-    const updatedTours = tours.filter((tour) => tour.id !== id);
-    setTours(updatedTours);
-    if (
-      selected !== 'All' &&
-      !updatedTours.some((tour) => tour.name.includes(selected))
-    ) {
+    const updated = tours.filter((tour) => tour.id !== id);
+    setTours(updated);
+    if (selected !== 'All' && !updated.some((t) => t.name === selected)) {
       setSelected('All');
     }
   };
@@ -42,7 +38,7 @@ const App = () => {
   const filteredTours =
     selected === 'All'
       ? tours
-      : tours.filter((tour) => tour.name.includes(selected));
+      : tours.filter((tour) => tour.name === selected);
 
   return (
     <main>
