@@ -33,7 +33,7 @@ const App = () => {
     setTours(updatedTours);
     if (
       selected !== 'All' &&
-      !updatedTours.some((tour) => tour.name.toLowerCase() === selected.toLowerCase())
+      !updatedTours.some((tour) => tour.name.includes(selected))
     ) {
       setSelected('All');
     }
@@ -42,13 +42,7 @@ const App = () => {
   const filteredTours =
     selected === 'All'
       ? tours
-      : tours.filter(
-          (tour) => tour.name.toLowerCase() === selected.toLowerCase()
-        );
-
-  console.log('Selected:', selected);
-  console.log('Tour names:', tours.map(t => t.name));
-  console.log('Filtered:', filteredTours.map(t => t.name));
+      : tours.filter((tour) => tour.name.includes(selected));
 
   return (
     <main>
