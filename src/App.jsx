@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Gallery from './components/gallery';
 import DestinationSelector from './components/DestinationSelector';
 
-const url = '/api/react-tours-project'; // uses Vite proxy
+const url = '/api/react-tours-project';
 
 const App = () => {
   const [tours, setTours] = useState([]);
@@ -36,7 +36,9 @@ const App = () => {
   const filteredTours =
     selected === 'All'
       ? tours
-      : tours.filter((tour) => tour.name === selected);
+      : tours.filter(
+          (tour) => tour.name.toLowerCase() === selected.toLowerCase()
+        );
 
   return (
     <main>
