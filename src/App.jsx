@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Gallery from './components/gallery';
+import Gallery from '/components/Gallery.jsx';
 import DestinationSelector from './components/DestinationSelector';
 
-const url = 'https://course-api.com/react-tours-project';
+const url = '/api/react-tours-project'; // uses Vite proxy
 
 const App = () => {
   const [tours, setTours] = useState([]);
@@ -15,9 +15,11 @@ const App = () => {
     setError(false);
     try {
       const res = await fetch(url);
+      if (!res.ok) throw new Error('Fetch failed');
       const data = await res.json();
       setTours(data);
     } catch (err) {
+      console.error('Fetch error:', err);
       setError(true);
     }
     setLoading(false);
