@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const TourCard = ({ id, name, info, image, price, onRemove }) => {
-  const [readMore, setReadMore] = useState(false);
+  const [showFull, setShowFull] = useState(false);
 
   return (
     <article>
@@ -9,9 +9,9 @@ const TourCard = ({ id, name, info, image, price, onRemove }) => {
       <h2>{name}</h2>
       <h4>${price}</h4>
       <p>
-        {readMore ? info : `${info.substring(0, 100)}... `}
-        <button onClick={() => setReadMore(!readMore)}>
-          {readMore ? 'Show Less' : 'Read More'}
+        {showFull ? info : `${info.substring(0, 150)}...`}
+        <button onClick={() => setShowFull(!showFull)}>
+          {showFull ? ' Show Less' : ' Read More'}
         </button>
       </p>
       <button onClick={() => onRemove(id)}>Not Interested</button>
