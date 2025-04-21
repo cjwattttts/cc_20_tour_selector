@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #292929;
+  background: linear-gradient(to bottom right, #2e2e2e, #242424);
   color: #f1f1f1;
 }
 
@@ -17,7 +17,14 @@ section {
   gap: 2rem;
 }
 
-h1, h2, h4 {
+h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+h2, h4 {
   color: #00b7ff;
   margin-bottom: 0.5rem;
 }
@@ -56,7 +63,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
@@ -67,25 +74,26 @@ button:active {
   transform: scale(0.98);
 }
 
-button:nth-of-type(1) {
+/* read more / show less */
+button.read-more {
   background-color: transparent;
   color: #00b7ff;
   padding: 0;
   font-size: 0.9rem;
 }
 
-button:nth-of-type(2) {
+/* not interested button */
+button.not-interested {
   background-color: #ff4d4d;
   color: white;
   border: 1px solid #ffaaaa;
-  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-button:nth-of-type(2):hover {
+button.not-interested:hover {
   background-color: #ff6b6b;
 }
 
-button:nth-of-type(2):active {
+button.not-interested:active {
   background-color: #ff3b3b;
 }
 

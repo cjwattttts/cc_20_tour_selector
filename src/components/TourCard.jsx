@@ -10,11 +10,11 @@ const TourCard = ({ id, name, info, image, price, onRemove }) => {
       <h4>${price}</h4>
       <p>
         {showFull ? info : `${info.substring(0, 150)}...`}
-        <button onClick={() => setShowFull(!showFull)}>
+        <button className="read-more" onClick={() => setShowFull(!showFull)}>
           {showFull ? ' Show Less' : ' Read More'}
         </button>
       </p>
-      <button onClick={() => onRemove(id)}>Not Interested</button>
+      <button className="not-interested" onClick={() => onRemove(id)}>Not Interested</button>
     </article>
   );
 };
