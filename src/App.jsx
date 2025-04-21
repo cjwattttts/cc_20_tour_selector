@@ -59,7 +59,7 @@ const App = () => {
 
   return (
     <main>
-      <h1>tour app</h1> {/* title at the top of the page */}
+      <h1>Tour App</h1> {/* title at the top of the page */}
       <DestinationSelector
         tours={tours}
         selected={selected}
